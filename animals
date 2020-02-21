@@ -1,0 +1,31 @@
+import time
+import random
+#TODO  an event where time passes. Like a turn. Each turn the rabbit takes actions, and the fox takes action.
+
+class Animal:
+    def __init__(self, carn, species, hunger, health, speed, pop):
+        self.carn = carn
+        self.species = species
+        self.hunger = hunger
+        self.health = health
+        self.speed = speed
+        self.pop = pop
+        
+    def hunt(self):
+        if self.hunger < 1.0:
+            #herbivore
+            if self.carn == False:
+                print("rabbit eats")
+            #carnivore
+            if self.carn == True:
+                print(self.species, "eats")
+               
+        else:
+            print(self.species, "isn't hungry.")
+
+
+
+rabbit = Animal(False, "rabbit", 1.0, 5, 5, 1)
+fox = Animal(True, "fox", 1.0, 8, 4, 1)
+
+print(rabbit.hunt())
