@@ -1,0 +1,55 @@
+import random
+
+class GuessNumber:
+	def __init__(self, number, mn=0,mx=100)
+	self.number = number
+	self.guesses = 0
+	self.mn = mn
+	self.mx =mx
+	
+	def valid_number(self, str_number):
+		try:
+			 number = int(str_number)
+		
+		except:
+			False
+	
+
+
+L,H = 1, 100
+turn = 0
+won = False
+
+def createNum(L,H):
+	number = random.randint(L,H)
+	return number
+	
+NUM = createNum(L,H)
+
+while True:
+	if turn == 0:
+		print("there is a number that I picked between 1 and 100. Try to guess what it is.")
+	if won == False:
+		turn += 1
+		choice = int(input())
+		if choice == NUM:
+			print("you won in {} turns!".format(turn))
+			won = True
+		elif choice < NUM:
+			print("\n{} is too low, try a higher number".format(choice))
+		elif choice > NUM:
+			print("\n{} is too high, try a lower number".format(choice))
+		
+	if won == True:
+			print(" do you want to play again? Yes or no?")
+			cont= input().lower()
+			if cont == "yes":
+				turn = 0
+				won = False
+				NUM = createNum(L,H)
+				continue
+			elif cont == "no":
+				break
+			else:
+				print("please say yes or no")
+				continue
