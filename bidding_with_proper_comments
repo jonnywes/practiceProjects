@@ -1,0 +1,48 @@
+"""
+This script is used primarily to practice proper documentation.
+The script allows users to bid for an item using a pre-determined amount of bids.
+If the user bids high enough, they will purchase the item.
+"""
+
+#the lowest amount the item can be sold for
+minimum_bid = 10
+#the amount of bids the user has
+bid_amount = 6
+#var that keeps track of the number of bids        
+count = 0   
+
+#A function that takes user input 'a' and checks if it's an int and then if it is below the minimum bid var.
+def a_bid(a):
+    if type(a) == int:
+        if a < minimum_bid:
+            print("too low")
+        else:
+            print("you bought it!")
+            #now that the item has been bought, we don't want to continue the bidding
+            #the global count is brought into the function
+            global count 
+            #the global count is assigned the same value as the bid amount
+            #which will then end the while loop below.
+            count = bid_amount
+    else:
+        print("use only numbers please")
+     
+
+#while loop that allows the user to make up to 5 bids.
+while count <= bid_amount:
+    #A try statement for checking if the user inputs an integer
+    try:
+        #takes user input and runs it through the a_bid function
+        bid = int(input("place your bid here: "))
+        a_bid(bid)
+    #if the user inputs a string, it will output the following error, 
+    except:
+        print("Please use numbers")
+        #continues the script from the beginning so the count doesn't increase
+        continue
+    #lets the user know why the script is ending
+    if count >= 6:
+        print("you've completed your bid")
+    #increases the count variable
+    count += 1
+        
